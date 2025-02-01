@@ -18,12 +18,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>صفحة البداية</title>
+  <title>تسجيل الدخول / إنشاء حساب</title>
+  <style>
+    /* تصميم الواجهة */
+  </style>
 </head>
 <body>
   <div class="container">
-    <a href="login.html">تسجيل الدخول</a>
-    <a href="register.html">إنشاء حساب</a>
+    <div id="loginForm">
+      <h2>تسجيل الدخول</h2>
+      <form>
+        <input type="email" placeholder="البريد الإلكتروني">
+        <input type="password" placeholder="كلمة المرور">
+        <button type="submit">تسجيل الدخول</button>
+      </form>
+      <p>ليس لديك حساب؟ <a href="#" id="showRegisterForm">إنشاء حساب</a></p>
+    </div>
+
+    <div id="registerForm" style="display: none;">
+      <h2>إنشاء حساب</h2>
+      <form>
+        <input type="text" placeholder="الاسم">
+        <input type="email" placeholder="البريد الإلكتروني">
+        <input type="password" placeholder="كلمة المرور">
+        <button type="submit">إنشاء حساب</button>
+      </form>
+      <p>لديك حساب بالفعل؟ <a href="#" id="showLoginForm">تسجيل الدخول</a></p>
+    </div>
   </div>
+
+  <script>
+    // كود JavaScript للتبديل بين النماذج
+  </script>
 </body>
 </html>
