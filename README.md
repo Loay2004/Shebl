@@ -1,45 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>تسجيل دخول مريض</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h2>تسجيل دخول مريض</h2>
-    <form id="loginForm">
-      <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-      <input type="password" id="password" placeholder="كلمة المرور" required>
-      <button type="submit">تسجيل الدخول</button>
-    </form>
-    <a href="register-patient.html">إنشاء حساب جديد</a>
-    <a href="login-doctor.html">تسجيل دخول طبيب</a>
-  </div>
-  <script src="firebase-config.js"></script>
-  <script src="auth.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>إنشاء حساب جديد لمريض</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h2>إنشاء حساب جديد لمريض</h2>
-    <form id="registerForm">
-      <input type="text" id="name" placeholder="الاسم" required>
-      <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-      <input type="password" id="password" placeholder="كلمة المرور" required>
-      <input type="password" id="confirmPassword" placeholder="تأكيد كلمة المرور" required>
-      <button type="submit">إنشاء حساب</button>
-    </form>
-    <a href="login-patient.html">تسجيل الدخول</a>
-    <a href="register-doctor.html">إنشاء حساب جديد لطبيب</a>
-  </div>
-  <script src="firebase-config.js"></script>
-  <script src="register.js"></script>
-</body>
-</html>
+<button id="patientButton">أنا مريض</button>
+
+<div id="patientOptions" style="display: none;">
+  <a href="login-patient.html">تسجيل الدخول</a>
+  <a href="register-patient.html">إنشاء حساب جديد</a>
+</div>
+
+<script>
+  const patientButton = document.getElementById('patientButton');
+  const patientOptions = document.getElementById('patientOptions');
+
+  patientButton.addEventListener('click', () => {
+    patientOptions.style.display = 'block';
+  });
+</script>
+<a href="login-patient.html"><button>تسجيل الدخول</button></a>
+<a href="register-patient.html"><button>إنشاء حساب جديد</button></a>
+// ... (كود للتحقق من وجود حساب للمريض، على سبيل المثال باستخدام Firebase) ...
+
+if (patientHasAccount) {
+  window.location.href = "login-patient.html";
+} else {
+  window.location.href = "register-patient.html";
+}
+#patientButton {
+  /* أنماط للزر الرئيسي */
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#patientOptions {
+  /* أنماط للخيارات */
+  margin-top: 10px;
+}
+
+#patientOptions a {
+  /* أنماط للروابط */
+  display: block;
+  padding: 5px 10px;
+  color: #333;
+  text-decoration: none;
+}
 
