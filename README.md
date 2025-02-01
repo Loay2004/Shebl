@@ -41,12 +41,32 @@
       loginForm.style.display = 'none';
       registerForm.style.display = 'block';
     });
-
-    showLoginForm.addEventListener('click', (event) => {
+  showLoginForm.addEventListener('click', (event) => {
       event.preventDefault();
       registerForm.style.display = 'none';
       loginForm.style.display = 'block';
     });
   </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>إنشاء حساب</title>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+  <h1>إنشاء حساب</h1>
+  <form id="registerForm">
+    <input type="text" id="name" placeholder="الاسم" required>
+    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+    <input type="password" id="password" placeholder="كلمة المرور" required>
+    <button type="submit">إنشاء حساب</button>
+  </form>
+
+  <script src="register.js"></script>
 </body>
 </html>
