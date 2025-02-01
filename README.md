@@ -15,3 +15,15 @@
 </script>
 <a href="login-patient.html"><button>تسجيل الدخول</button></a>
 <a href="register-patient.html"><button>إنشاء حساب جديد</button></a>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>صفحة البداية</title>
+</head>
+<body>
+  <div class="container">
+    <a href="login.html">تسجيل الدخول</a>
+    <a href="register.html">إنشاء حساب</a>
+  </div>
+</body>
+</html>
