@@ -4,73 +4,23 @@
   <meta charset="UTF-8">
   <title>موقع ربط بين المريض واخصائيين العلاج الطبيعي</title>
   <style>
-    /* تصميم الواجهة */
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .header img {
-      max-width: 200px;
-    }
-    .buttons {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .buttons button {
-      padding: 10px 20px;
-      margin: 0 10px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    .form-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .form-container input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .form-container button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    .form-container p {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #333;
-      color: white;
-    }
+    /* تصميم الواجهة (احتفظ بهذا التصميم كما هو) */
+    body { /* ... */ }
+    .container { /* ... */ }
+    /* ... */
   </style>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+  <script>
+    // معلومات مشروعك في Firebase (استبدل هذه القيم بمعلومات مشروعك)
+    const firebaseConfig = {
+      // ...
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
 </head>
 <body>
   <div class="container">
@@ -88,7 +38,7 @@
       <form id="loginFormElement">
         <input type="email" id="loginEmail" placeholder="البريد الإلكتروني">
         <input type="password" id="loginPassword" placeholder="كلمة المرور">
-        <button type="submit">تسجيل الدخول</button>
+        <button type="button" onclick="loginUser()">تسجيل الدخول</button>
       </form>
       <p>ليس لديك حساب؟ <a href="#" id="showRegisterForm">إنشاء حساب</a></p>
     </div>
@@ -99,7 +49,7 @@
         <input type="text" id="registerName" placeholder="الاسم">
         <input type="email" id="registerEmail" placeholder="البريد الإلكتروني">
         <input type="password" id="registerPassword" placeholder="كلمة المرور">
-        <button type="submit">إنشاء حساب</button>
+        <button type="button" onclick="registerUser()">إنشاء حساب</button>
       </form>
       <p>لديك حساب بالفعل؟ <a href="#" id="showLoginForm">تسجيل الدخول</a></p>
     </div>
@@ -110,6 +60,7 @@
   </div>
 
   <script>
+    // (النموذج القديم - احتفظ به كما هو)
     const showRegisterForm = document.getElementById('showRegisterForm');
     const showLoginForm = document.getElementById('showLoginForm');
     const loginForm = document.getElementById('loginForm');
@@ -117,27 +68,50 @@
     const patientButton = document.getElementById('patientButton');
     const doctorButton = document.getElementById('doctorButton');
 
-    showRegisterForm.addEventListener('click', (event) => {
-      event.preventDefault();
-      loginForm.style.display = 'none';
-      registerForm.style.display = 'block';
-    });
+    showRegisterForm.addEventListener('click', (event) => { /* ... */ });
+    showLoginForm.addEventListener('click', (event) => { /* ... */ });
+    patientButton.addEventListener('click', () => { /* ... */ });
+    doctorButton.addEventListener('click', () => { /* ... */ });
 
-    showLoginForm.addEventListener('click', (event) => {
-      event.preventDefault();
-      registerForm.style.display = 'none';
-      loginForm.style.display = 'block';
-    });
+    // دمج مع Firebase
+    async function loginUser() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
 
-    patientButton.addEventListener('click', () => {
-      // هنا يمكنك إضافة الكود الخاص بتوجيه المستخدم إلى صفحة المرضى
-      alert('أنت مريض');
-    });
+      try {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        console.log('تم تسجيل الدخول بنجاح:', user);
+        // هنا يمكنك توجيه المستخدم إلى الصفحة المناسبة
+      } catch (error) {
+        console.error('خطأ في تسجيل الدخول:', error);
+        alert('خطأ في تسجيل الدخول. يرجى التحقق من البريد الإلكتروني وكلمة المرور.');
+      }
+    }
 
-    doctorButton.addEventListener('click', () => {
-      // هنا يمكنك إضافة الكود الخاص بتوجيه المستخدم إلى صفحة الأطباء
-      alert('أنت طبيب');
-    });
+    async function registerUser() {
+      const name = document.getElementById('registerName').value;
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+
+      try {
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+
+        await db.collection('users').doc(user.uid).set({
+          name: name,
+          email: email
+          // ... بيانات إضافية
+        });
+
+        console.log('تم إنشاء حساب المستخدم بنجاح');
+        alert('تم إنشاء حسابك بنجاح!');
+        // هنا يمكنك توجيه المستخدم إلى الصفحة المناسبة
+      } catch (error) {
+        console.error('خطأ في إنشاء حساب المستخدم:', error);
+        alert('حدث خطأ أثناء التسجيل.');
+      }
+    }
   </script>
 </body>
 </html>
