@@ -146,7 +146,7 @@ const firebaseConfig = {
 
         <div id="patientRegisterForm" class="form-container">
             <h2>تسجيل مريض جديد</h2>
-            <form id="patientRegisterFormElement">
+            <form id="patientRegisterForm">
                 <input type="text" id="patientName" placeholder="الاسم الكامل">
                 <input type="email" id="patientEmail" placeholder="البريد الإلكتروني">
                 <input type="password" id="patientPassword" placeholder="كلمة المرور">
@@ -173,15 +173,3 @@ const firebaseConfig = {
 
         <div id="doctorRegisterForm" class="form-container">
             <h2>تسجيل طبيب جديد</h2>
-            <form id="doctorRegisterFormElement">
-                <input type="text" id="doctorName" placeholder="الاسم الكامل">
-                <input type="email" id="doctorEmail" placeholder="البريد الإلكتروني">
-                <input type="password" id="doctorPassword" placeholder="كلمة المرور">
-                <input type="password" id="doctorConfirmPassword" placeholder="تأكيد كلمة المرور">
-                <input type="date" id="doctorBirthdate" placeholder="تاريخ الميلاد">
-                <select id="doctorGender">
-                    <option value="male">ذكر</option>
-                    <option value="female">أنثى</option>
-                </select>
-                <input type="tel" id="doctorPhone" placeholder="رقم الهاتف">
-                <
