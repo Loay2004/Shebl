@@ -89,18 +89,15 @@
     <script>
         // معلومات مشروعك في Firebase (استبدل هذه القيم بمعلومات مشروعك)
         const firebaseConfig = {
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBbrnZTdgXDdVcjLf5te2cPtHAtoxhdFZY",
-  authDomain: "shebl-f8189.firebaseapp.com",
-  databaseURL: "https://shebl-f8189-default-rtdb.firebaseio.com",
-  projectId: "shebl-f8189",
-  storageBucket: "shebl-f8189.firebasestorage.app",
-  messagingSenderId: "810550477921",
-  appId: "1:810550477921:web:377239051a3926d7955620",
-  measurementId: "G-N1QYGDCJG9"
-};
-        
+            apiKey: "AIzaSyBbrnZTdgXDdVcjLf5te2cPtHAtoxhdFZY",
+            authDomain: "shebl-f8189.firebaseapp.com",
+            databaseURL: "https://shebl-f8189-default-rtdb.firebaseio.com",
+            projectId: "shebl-f8189",
+            storageBucket: "shebl-f8189.firebasestorage.app",
+            messagingSenderId: "810550477921",
+            appId: "1:810550477921:web:377239051a3926d7955620",
+            measurementId: "G-N1QYGDCJG9"
+        };
 
         // تهيئة Firebase
         firebase.initializeApp(firebaseConfig);
@@ -108,6 +105,41 @@ const firebaseConfig = {
         // الحصول على مثيلات الخدمات
         const auth = firebase.auth();
         const db = firebase.firestore();
+
+        // الحصول على العناصر من HTML
+        const patientButton = document.getElementById('patientButton');
+        const doctorButton = document.getElementById('doctorButton');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const patientRegisterForm = document.getElementById('patientRegisterForm');
+        const showRegisterForm = document.getElementById('showRegisterForm');
+        const showLoginForm = document.getElementById('showLoginForm');
+
+        // إضافة مستمع للأحداث لزر "أنا مريض"
+        patientButton.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'none';
+            patientRegisterForm.style.display = 'block'; // إظهار نموذج تسجيل المرضى
+        });
+
+        // إضافة مستمع للأحداث لزر "أنا طبيب"
+        doctorButton.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block'; // إظهار نموذج تسجيل الأطباء (إذا كان لديك نموذج مختلف للأطباء)
+            patientRegisterForm.style.display = 'none';
+        });
+
+        //  إظهار نموذج التسجيل عند الضغط على "إنشاء حساب"
+        showRegisterForm.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        });
+
+        // إظهار نموذج تسجيل الدخول عند الضغط على "تسجيل الدخول"
+        showLoginForm.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
     </script>
 </head>
 
@@ -146,7 +178,7 @@ const firebaseConfig = {
 
         <div id="patientRegisterForm" class="form-container">
             <h2>تسجيل مريض جديد</h2>
-            <form id="patientRegisterForm">
+            <form id="patientRegisterFormElement">
                 <input type="text" id="patientName" placeholder="الاسم الكامل">
                 <input type="email" id="patientEmail" placeholder="البريد الإلكتروني">
                 <input type="password" id="patientPassword" placeholder="كلمة المرور">
@@ -156,20 +188,14 @@ const firebaseConfig = {
                     <option value="male">ذكر</option>
                     <option value="female">أنثى</option>
                 </select>
-                <input type="tel" id="patientPhone" placeholder="رقم الهاتف">
-                <input type="text" id="patientCity" placeholder="المدينة">
-                <input type="text" id="patientArea" placeholder="المنطقة">
-                <textarea id="patientHealthCondition" placeholder="الحالة الصحية العامة"></textarea>
-                <textarea id="patientCurrentProblems" placeholder="المشاكل الصحية الحالية"></textarea>
-                <select id="patientTreatmentType">
-                    <option value="sports">علاج طبيعي رياضي</option>
-                    <option value="neuro">علاج طبيعي للأعصاب</option>
-                    <option value="other">أخرى</option>
-                </select>
-                <input type="number" id="patientBudget" placeholder="الميزانية المتاحة">
-                <button type="submit">إنشاء حساب</button>
+                <button type="submit">تسجيل</button>
             </form>
         </div>
 
-        <div id="doctorRegisterForm" class="form-container">
-            <h2>تسجيل طبيب جديد</h2>
+        <div class="footer">
+            &copy; 2023 جميع الحقوق محفوظة
+        </div>
+    </div>
+</body>
+
+</html>
