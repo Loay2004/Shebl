@@ -83,96 +83,21 @@
             color: white;
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     <script>
-        // معلومات مشروعك في Firebase (استبدل هذه القيم بمعلومات مشروعك)
-        const firebaseConfig = {
-            apiKey: "AIzaSyBbrnZTdgXDdVcjLf5te2cPtHAtoxhdFZY",
-            authDomain: "shebl-f8189.firebaseapp.com",
-            databaseURL: "https://shebl-f8189-default-rtdb.firebaseio.com",
-            projectId: "shebl-f8189",
-            storageBucket: "shebl-f8189.firebasestorage.app",
-            messagingSenderId: "810550477921",
-            appId: "1:810550477921:web:377239051a3926d7955620",
-            measurementId: "G-N1QYGDCJG9"
-        };
-
-        // تهيئة Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // الحصول على مثيلات الخدمات
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-
         // الحصول على العناصر من HTML
         const patientButton = document.getElementById('patientButton');
         const doctorButton = document.getElementById('doctorButton');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const patientRegisterForm = document.getElementById('patientRegisterForm');
-        const doctorRegisterForm = document.getElementById('doctorRegisterForm'); // Get doctor's form
-        const showRegisterForm = document.getElementById('showRegisterForm');
-        const showLoginForm = document.getElementById('showLoginForm');
 
         // إضافة مستمع للأحداث لزر "أنا مريض"
         patientButton.addEventListener('click', () => {
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'none';
-            doctorRegisterForm.style.display = 'none'; // Hide doctor's form
-            patientRegisterForm.style.display = 'block'; // إظهار نموذج تسجيل المرضى
+            // توجيه المستخدم إلى صفحة تسجيل الدخول
+            window.location.href = 'login.html'; // استبدل 'login.html' بعنوان URL لصفحة تسجيل الدخول
         });
 
         // إضافة مستمع للأحداث لزر "أنا طبيب"
         doctorButton.addEventListener('click', () => {
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'none';
-            patientRegisterForm.style.display = 'none'; // Hide patient's form
-            doctorRegisterForm.style.display = 'block'; // إظهار نموذج تسجيل الأطباء
-        });
-
-        //  إظهار نموذج التسجيل عند الضغط على "إنشاء حساب"
-        showRegisterForm.addEventListener('click', () => {
-            loginForm.style.display = 'none';
-            patientRegisterForm.style.display = 'none';
-            doctorRegisterForm.style.display = 'none'; // Hide all other forms
-            registerForm.style.display = 'block';
-        });
-
-        // إظهار نموذج تسجيل الدخول عند الضغط على "تسجيل الدخول"
-        showLoginForm.addEventListener('click', () => {
-            loginForm.style.display = 'block';
-            patientRegisterForm.style.display = 'none';
-            doctorRegisterForm.style.display = 'none'; // Hide all other forms
-            registerForm.style.display = 'none';
-        });
-
-
-        // مثال لإضافة إجراء لتسجيل مريض جديد (يجب عليك تعديل هذا الجزء ليناسب احتياجاتك)
-        const patientRegisterFormElement = document.getElementById('patientRegisterFormElement');
-        patientRegisterFormElement.addEventListener('submit', (event) => {
-            event.preventDefault(); // منع إرسال النموذج بشكل افتراضي
-
-            // الحصول على بيانات النموذج
-            const patientName = document.getElementById('patientName').value;
-            const patientEmail = document.getElementById('patientEmail').value;
-            const patientPassword = document.getElementById('patientPassword').value;
-            const patientConfirmPassword = document.getElementById('patientConfirmPassword').value;
-            const patientBirthdate = document.getElementById('patientBirthdate').value;
-            const patientGender = document.getElementById('patientGender').value;
-
-            // هنا يمكنك إضافة كود للتحقق من البيانات وتسجيل المستخدم في Firebase
-            // على سبيل المثال:
-            // auth.createUserWithEmailAndPassword(patientEmail, patientPassword)
-            //   .then((userCredential) => {
-            //     // المستخدم تم تسجيله بنجاح
-            //     console.log('تم تسجيل المستخدم بنجاح');
-            //   })
-            //   .catch((error) => {
-            //     // حدث خطأ أثناء التسجيل
-            //     console.error('حدث خطأ أثناء التسجيل:', error);
-            //   });
+            // توجيه المستخدم إلى صفحة تسجيل الدخول
+            window.location.href = 'login.html'; // استبدل 'login.html' بعنوان URL لصفحة تسجيل الدخول
         });
     </script>
 </head>
@@ -188,11 +113,10 @@
             <button id="doctorButton">أنا طبيب</button>
         </div>
 
-        <div id="loginForm" class="form-container">
-            <h2>تسجيل الدخول</h2>
-            <form id="loginFormElement">
-                <input type="email" id="loginEmail" placeholder="البريد الإلكتروني">
-                <input type="password" id="loginPassword" placeholder="كلمة المرور">
-                <button type="submit">تسجيل الدخول</button>
-            </form>
-            <
+        <div class="footer">
+            &copy; 2023 جميع الحقوق محفوظة
+        </div>
+    </div>
+</body>
+
+</html>
