@@ -197,7 +197,6 @@ const firebaseConfig = {
     </div>
 
     <div class="footer">
-جميع الحقوق محفوظة &copy; 202
 // ... (كود تهيئة Firebase كما هو) ...
 
 const patientButton = document.getElementById('patientButton');
@@ -211,38 +210,35 @@ const doctorRegisterForm = document.getElementById('doctorRegisterForm');
 const showRegisterForm = document.getElementById('showRegisterForm');
 const showLoginForm = document.getElementById('showLoginForm');
 
-
-patientButton.addEventListener('click', () => {
-    loginForm.style.display = 'none';
-    registerForm.style.display = 'none';
-    patientRegisterForm.style.display = 'block';
-    doctorRegisterForm.style.display = 'none';
-});
-
-doctorButton.addEventListener('click', () => {
+// دالة لإخفاء جميع النماذج
+function hideAllForms() {
     loginForm.style.display = 'none';
     registerForm.style.display = 'none';
     patientRegisterForm.style.display = 'none';
+    doctorRegisterForm.style.display = 'none';
+}
+
+patientButton.addEventListener('click', () => {
+    hideAllForms(); // إخفاء جميع النماذج أولاً
+    patientRegisterForm.style.display = 'block';
+});
+
+doctorButton.addEventListener('click', () => {
+    hideAllForms(); // إخفاء جميع النماذج أولاً
     doctorRegisterForm.style.display = 'block';
 });
 
 showRegisterForm.addEventListener('click', (event) => {
     event.preventDefault();
-    loginForm.style.display = 'none';
+    hideAllForms(); // إخفاء جميع النماذج أولاً
     registerForm.style.display = 'block';
-    patientRegisterForm.style.display = 'none';
-    doctorRegisterForm.style.display = 'none';
 });
 
 showLoginForm.addEventListener('click', (event) => {
     event.preventDefault();
-    registerForm.style.display = 'none';
+    hideAllForms(); // إخفاء جميع النماذج أولاً
     loginForm.style.display = 'block';
-    patientRegisterForm.style.display = 'none';
-    doctorRegisterForm.style.display = 'none';
 });
-
-
 
 // ... (بقية دوال التسجيل كما هي) ...
 
