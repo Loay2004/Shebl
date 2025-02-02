@@ -83,23 +83,6 @@
             color: white;
         }
     </style>
-    <script>
-        // الحصول على العناصر من HTML
-        const patientButton = document.getElementById('patientButton');
-        const doctorButton = document.getElementById('doctorButton');
-
-        // إضافة مستمع للأحداث لزر "أنا مريض"
-        patientButton.addEventListener('click', () => {
-            // توجيه المستخدم إلى صفحة تسجيل الدخول
-            window.location.href = 'login.html'; // استبدل 'login.html' بعنوان URL لصفحة تسجيل الدخول
-        });
-
-        // إضافة مستمع للأحداث لزر "أنا طبيب"
-        doctorButton.addEventListener('click', () => {
-            // توجيه المستخدم إلى صفحة تسجيل الدخول
-            window.location.href = 'login.html'; // استبدل 'login.html' بعنوان URL لصفحة تسجيل الدخول
-        });
-    </script>
 </head>
 
 <body>
@@ -117,6 +100,24 @@
             &copy; 2023 جميع الحقوق محفوظة
         </div>
     </div>
+
+    <script>
+        // الحصول على العناصر من HTML
+        const patientButton = document.getElementById('patientButton');
+        const doctorButton = document.getElementById('doctorButton');
+
+        // إضافة مستمع للأحداث لزر "أنا مريض"
+        patientButton.addEventListener('click', () => {
+            // توجيه المستخدم إلى صفحة تسجيل الدخول
+            window.location.href = 'login.html'; // استبدل 'login.html' بعنوان URL لصفحة تسجيل الدخول
+        });
+
+        // إضافة مستمع للأحداث لزر "أنا طبيب"
+        doctorButton.addEventListener('click', () => {
+            // توجيه المستخدم إلى صفحة تسجيل الدخول
+            window.location.href = 'login.html'; // استبدل 'login.html' بعنوان URL لصفحة تسجيل الدخول
+        });
+    </script>
 </body>
 
 </html>
