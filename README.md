@@ -112,6 +112,7 @@
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const patientRegisterForm = document.getElementById('patientRegisterForm');
+        const doctorRegisterForm = document.getElementById('doctorRegisterForm'); // Get doctor's form
         const showRegisterForm = document.getElementById('showRegisterForm');
         const showLoginForm = document.getElementById('showLoginForm');
 
@@ -119,26 +120,59 @@
         patientButton.addEventListener('click', () => {
             loginForm.style.display = 'none';
             registerForm.style.display = 'none';
+            doctorRegisterForm.style.display = 'none'; // Hide doctor's form
             patientRegisterForm.style.display = 'block'; // إظهار نموذج تسجيل المرضى
         });
 
         // إضافة مستمع للأحداث لزر "أنا طبيب"
         doctorButton.addEventListener('click', () => {
             loginForm.style.display = 'none';
-            registerForm.style.display = 'block'; // إظهار نموذج تسجيل الأطباء (إذا كان لديك نموذج مختلف للأطباء)
-            patientRegisterForm.style.display = 'none';
+            registerForm.style.display = 'none';
+            patientRegisterForm.style.display = 'none'; // Hide patient's form
+            doctorRegisterForm.style.display = 'block'; // إظهار نموذج تسجيل الأطباء
         });
 
         //  إظهار نموذج التسجيل عند الضغط على "إنشاء حساب"
         showRegisterForm.addEventListener('click', () => {
             loginForm.style.display = 'none';
+            patientRegisterForm.style.display = 'none';
+            doctorRegisterForm.style.display = 'none'; // Hide all other forms
             registerForm.style.display = 'block';
         });
 
         // إظهار نموذج تسجيل الدخول عند الضغط على "تسجيل الدخول"
         showLoginForm.addEventListener('click', () => {
             loginForm.style.display = 'block';
+            patientRegisterForm.style.display = 'none';
+            doctorRegisterForm.style.display = 'none'; // Hide all other forms
             registerForm.style.display = 'none';
+        });
+
+
+        // مثال لإضافة إجراء لتسجيل مريض جديد (يجب عليك تعديل هذا الجزء ليناسب احتياجاتك)
+        const patientRegisterFormElement = document.getElementById('patientRegisterFormElement');
+        patientRegisterFormElement.addEventListener('submit', (event) => {
+            event.preventDefault(); // منع إرسال النموذج بشكل افتراضي
+
+            // الحصول على بيانات النموذج
+            const patientName = document.getElementById('patientName').value;
+            const patientEmail = document.getElementById('patientEmail').value;
+            const patientPassword = document.getElementById('patientPassword').value;
+            const patientConfirmPassword = document.getElementById('patientConfirmPassword').value;
+            const patientBirthdate = document.getElementById('patientBirthdate').value;
+            const patientGender = document.getElementById('patientGender').value;
+
+            // هنا يمكنك إضافة كود للتحقق من البيانات وتسجيل المستخدم في Firebase
+            // على سبيل المثال:
+            // auth.createUserWithEmailAndPassword(patientEmail, patientPassword)
+            //   .then((userCredential) => {
+            //     // المستخدم تم تسجيله بنجاح
+            //     console.log('تم تسجيل المستخدم بنجاح');
+            //   })
+            //   .catch((error) => {
+            //     // حدث خطأ أثناء التسجيل
+            //     console.error('حدث خطأ أثناء التسجيل:', error);
+            //   });
         });
     </script>
 </head>
@@ -161,41 +195,4 @@
                 <input type="password" id="loginPassword" placeholder="كلمة المرور">
                 <button type="submit">تسجيل الدخول</button>
             </form>
-            <p>ليس لديك حساب؟ <a href="#" id="showRegisterForm">إنشاء حساب</a></p>
-        </div>
-
-        <div id="registerForm" class="form-container">
-            <h2>إنشاء حساب</h2>
-            <form id="registerFormElement">
-                <input type="text" id="registerName" placeholder="الاسم">
-                <input type="email" id="registerEmail" placeholder="البريد الإلكتروني">
-                <input type="password" id="registerPassword" placeholder="كلمة المرور">
-                <input type="password" id="confirmPassword" placeholder="تأكيد كلمة المرور">
-                <button type="submit">إنشاء حساب</button>
-            </form>
-            <p>لديك حساب بالفعل؟ <a href="#" id="showLoginForm">تسجيل الدخول</a></p>
-        </div>
-
-        <div id="patientRegisterForm" class="form-container">
-            <h2>تسجيل مريض جديد</h2>
-            <form id="patientRegisterFormElement">
-                <input type="text" id="patientName" placeholder="الاسم الكامل">
-                <input type="email" id="patientEmail" placeholder="البريد الإلكتروني">
-                <input type="password" id="patientPassword" placeholder="كلمة المرور">
-                <input type="password" id="patientConfirmPassword" placeholder="تأكيد كلمة المرور">
-                <input type="date" id="patientBirthdate" placeholder="تاريخ الميلاد">
-                <select id="patientGender">
-                    <option value="male">ذكر</option>
-                    <option value="female">أنثى</option>
-                </select>
-                <button type="submit">تسجيل</button>
-            </form>
-        </div>
-
-        <div class="footer">
-            &copy; 2023 جميع الحقوق محفوظة
-        </div>
-    </div>
-</body>
-
-</html>
+            <p>ليس لديك حساب؟ <a href="#" id
