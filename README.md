@@ -195,4 +195,4 @@
                 <input type="password" id="loginPassword" placeholder="كلمة المرور">
                 <button type="submit">تسجيل الدخول</button>
             </form>
-            <p>ليس لديك حساب؟ <a href="#" id
+            <
