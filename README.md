@@ -197,6 +197,7 @@ const firebaseConfig = {
     </div>
 
     <div class="footer">
+جميع الحقوق محفوظه
 // ... (كود تهيئة Firebase كما هو) ...
 
 const patientButton = document.getElementById('patientButton');
@@ -241,4 +242,3 @@ showLoginForm.addEventListener('click', (event) => {
 });
 
 // ... (بقية دوال التسجيل كما هي) ...
-
