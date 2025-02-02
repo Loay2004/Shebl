@@ -184,17 +184,4 @@ const firebaseConfig = {
                     <option value="female">أنثى</option>
                 </select>
                 <input type="tel" id="doctorPhone" placeholder="رقم الهاتف">
-                <input type="text" id="doctorCity" placeholder="المدينة">
-                <input type="text" id="doctorArea" placeholder="المنطقة">
-                <input type="text" id="doctorSpecialization" placeholder="التخصص">
-                <input type="number" id="doctorExperience" placeholder="سنوات الخبرة">
-                <textarea id="doctorQualifications" placeholder="المؤهلات العلمية"></textarea>
-                <input type="text" id="doctorWorkplace" placeholder="مكان العمل الحالي">
-                <input type="text" id="doctorLanguages" placeholder="اللغات التي يتحدث بها">
-                <button type="submit">إنشاء حساب</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="footer">
-جميع الحقوق محفوظه
+                <
