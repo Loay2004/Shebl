@@ -197,4 +197,52 @@ const firebaseConfig = {
     </div>
 
     <div class="footer">
-        جميع الحقوق محفوظة &copy; 202
+جميع الحقوق محفوظة &copy; 202
+// ... (كود تهيئة Firebase كما هو) ...
+
+const patientButton = document.getElementById('patientButton');
+const doctorButton = document.getElementById('doctorButton');
+
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const patientRegisterForm = document.getElementById('patientRegisterForm');
+const doctorRegisterForm = document.getElementById('doctorRegisterForm');
+
+const showRegisterForm = document.getElementById('showRegisterForm');
+const showLoginForm = document.getElementById('showLoginForm');
+
+
+patientButton.addEventListener('click', () => {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'none';
+    patientRegisterForm.style.display = 'block';
+    doctorRegisterForm.style.display = 'none';
+});
+
+doctorButton.addEventListener('click', () => {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'none';
+    patientRegisterForm.style.display = 'none';
+    doctorRegisterForm.style.display = 'block';
+});
+
+showRegisterForm.addEventListener('click', (event) => {
+    event.preventDefault();
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'block';
+    patientRegisterForm.style.display = 'none';
+    doctorRegisterForm.style.display = 'none';
+});
+
+showLoginForm.addEventListener('click', (event) => {
+    event.preventDefault();
+    registerForm.style.display = 'none';
+    loginForm.style.display = 'block';
+    patientRegisterForm.style.display = 'none';
+    doctorRegisterForm.style.display = 'none';
+});
+
+
+
+// ... (بقية دوال التسجيل كما هي) ...
+
