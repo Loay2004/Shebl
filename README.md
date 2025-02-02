@@ -14,7 +14,17 @@
   <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
   <script>
     // معلومات مشروعك في Firebase (استبدل هذه القيم بمعلومات مشروعك)
-    const firebaseConfig = {
+    const firebaseConfig = {// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBbrnZTdgXDdVcjLf5te2cPtHAtoxhdFZY",
+  authDomain: "shebl-f8189.firebaseapp.com",
+  databaseURL: "https://shebl-f8189-default-rtdb.firebaseio.com",
+  projectId: "shebl-f8189",
+  storageBucket: "shebl-f8189.firebasestorage.app",
+  messagingSenderId: "810550477921",
+  appId: "1:810550477921:web:377239051a3926d7955620",
+  measurementId: "G-N1QYGDCJG9"
+};
       // ...
     };
     firebase.initializeApp(firebaseConfig);
